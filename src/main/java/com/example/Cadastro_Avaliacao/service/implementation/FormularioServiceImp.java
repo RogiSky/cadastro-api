@@ -23,14 +23,14 @@ public class FormularioServiceImp implements FormularioService{
 
 	private FormularioRepository repository;
 
+	@Autowired
 	public FormularioServiceImp(FormularioRepository repository) {
 		this.repository = repository;
 	}
 
 	@Override
 	@Transactional
-	public Formulario salvar(Formulario formulario) {
-		
+	public Formulario salvar(Formulario formulario) {		
 			validar(formulario);
 			validarCpf(formulario.getCpf());		
 			return repository.save(formulario);
@@ -80,19 +80,33 @@ public class FormularioServiceImp implements FormularioService{
 		if(formulario.getNome() == null || formulario.getNome().trim().equals("") ) {
 			throw new RegraNegocioException("Campo Nome é obrigatório");
 		}
-		if(formulario.getUF()== null ) {
+		if(formulario.getUf()== null ) {
 			throw new RegraNegocioException("Campo UF é obrigatório");
 		}
-		if(formulario.getDiaNascimento() == null || formulario.getDiaNascimento() < 1 || formulario.getDiaNascimento() >31) {
+		if(formulario.getDiaNascimento() != null && (formulario.getDiaNascimento() < 1 || formulario.getDiaNascimento() >31)) {
 			throw new RegraNegocioException("Dia informado inválido.");
 		}
-		if(formulario.getMesNascimento() == null || formulario.getMesNascimento() < 1 || formulario.getMesNascimento() >12) {
+		if(formulario.getMesNascimento() != null && (formulario.getMesNascimento() < 1 || formulario.getMesNascimento() >12)) {
 			throw new RegraNegocioException("Mês informado inválido.");
 		}
-		if(formulario.getAnoNascimento() == null || formulario.getMesNascimento().toString().length() != 4) {
+		if(formulario.getAnoNascimento() != null && (formulario.getAnoNascimento().toString().length() != 4)) {
 			throw new RegraNegocioException("Ano informado inválido.");
 		}
 		
+	}
+
+	@Override
+	public Optional<Formulario> selecionaPorCpf(String cpf) {
+		return repository.findByCpf(cpf);
+	}
+
+	@Override
+	public Integer obterTotalPorEstado(String uf) {
+		Integer result = repository.obterTotalPorEstado(uf);
+		if(result == null) {
+			result = 0;
+		}
+		return result;
 	}
 
 	

@@ -25,16 +25,16 @@ public class Formulario {
 	private String cpf;
 	@Column(name="nome")
 	private String nome;
-	//Data de nascimento
-	@Column(name="diaNascimento")
-	private Integer diaNascimento;
-	@Column(name="mesNascimento")
-	private Integer mesNascimento;
-	@Column(name="anoNascimento")
-	private Integer anoNascimento;
+	@Column(name="uf")
+	private String uf;
 	@Column(name="peso")
-	private float peso;
-	@Column(name="UF")
-	private String UF;
-
+	private Float peso;
+//Data de nascimento
+	@Column(name ="dia_nascimento")
+	private Integer diaNascimento;
+	@Column(name="mes_nascimento")
+	private Integer mesNascimento;
+	@Column(name="ano_nascimento")
+	private Integer anoNascimento;
+	
 }
