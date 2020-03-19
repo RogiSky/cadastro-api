@@ -1,5 +1,7 @@
 package com.example.Cadastro_Avaliacao.model.entity;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -30,11 +32,7 @@ public class Formulario {
 	@Column(name="peso")
 	private Float peso;
 //Data de nascimento
-	@Column(name ="dia_nascimento")
-	private Integer diaNascimento;
-	@Column(name="mes_nascimento")
-	private Integer mesNascimento;
-	@Column(name="ano_nascimento")
-	private Integer anoNascimento;
+	@Column(name ="data_nascimento")
+	private Date dataNascimento;
 	
 }

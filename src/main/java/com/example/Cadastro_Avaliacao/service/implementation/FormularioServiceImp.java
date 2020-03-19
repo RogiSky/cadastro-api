@@ -83,15 +83,6 @@ public class FormularioServiceImp implements FormularioService{
 		if(formulario.getUf()== null ) {
 			throw new RegraNegocioException("Campo UF é obrigatório");
 		}
-		if(formulario.getDiaNascimento() != null && (formulario.getDiaNascimento() < 1 || formulario.getDiaNascimento() >31)) {
-			throw new RegraNegocioException("Dia informado inválido.");
-		}
-		if(formulario.getMesNascimento() != null && (formulario.getMesNascimento() < 1 || formulario.getMesNascimento() >12)) {
-			throw new RegraNegocioException("Mês informado inválido.");
-		}
-		if(formulario.getAnoNascimento() != null && (formulario.getAnoNascimento().toString().length() != 4)) {
-			throw new RegraNegocioException("Ano informado inválido.");
-		}
 		
 	}
 

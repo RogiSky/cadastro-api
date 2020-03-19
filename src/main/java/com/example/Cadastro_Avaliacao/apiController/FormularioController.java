@@ -1,5 +1,6 @@
 package com.example.Cadastro_Avaliacao.apiController;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,18 +42,14 @@ public class FormularioController {
 			@RequestParam(value = "nome", required = false) String nome,
 			@RequestParam(value = "uf", required = false) String uf,
 			@RequestParam(value = "peso", required = false) Float peso,
-			@RequestParam(value = "diaNascimento", required = false) Integer diaNascimento,
-			@RequestParam(value = "mesNascimento", required = false) Integer mesNascimento,
-			@RequestParam(value = "anoNascimento", required = false) Integer anoNascimento
+			@RequestParam(value = "dataNascimento", required = false) Date dataNascimento
 			) {
 		Formulario formularioFiltro = new Formulario();
 		formularioFiltro.setCpf(cpf);
 		formularioFiltro.setNome(nome);
 		formularioFiltro.setUf(uf);
 		formularioFiltro.setPeso(peso);
-		formularioFiltro.setDiaNascimento(diaNascimento);
-		formularioFiltro.setMesNascimento(mesNascimento);
-		formularioFiltro.setAnoNascimento(anoNascimento);
+		formularioFiltro.setDataNascimento(dataNascimento);
 		
 		List<Formulario> formularios = service.buscar(formularioFiltro);
 		return ResponseEntity.ok(formularios);
@@ -104,9 +101,7 @@ public class FormularioController {
 		formulario.setNome(dto.getNome());
 		formulario.setUf(dto.getUf());
 		formulario.setPeso(dto.getPeso());			
-		formulario.setDiaNascimento(dto.getDiaNascimento());
-		formulario.setMesNascimento(dto.getMesNascimento());
-		formulario.setAnoNascimento(dto.getAnoNascimento());
+		formulario.setDataNascimento(dto.getDataNascimento());
 		return formulario;
 	}
 	

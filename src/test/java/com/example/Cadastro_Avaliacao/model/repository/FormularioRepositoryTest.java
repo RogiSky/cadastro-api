@@ -32,9 +32,7 @@ public class FormularioRepositoryTest {
 				.nome("teste")
 				.uf("SP")
 				.peso(pes)
-				.diaNascimento(1)
-				.mesNascimento(2)
-				.anoNascimento(1990).build();
+				.build();
 		
 	}
 	
