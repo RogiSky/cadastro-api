@@ -15,6 +15,12 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.example.Cadastro_Avaliacao.model.entity.Usuario;
+import com.example.Cadastro_Avaliacao.exception.ErroAutenticacao;
+import com.example.Cadastro_Avaliacao.exception.RegraNegocioException;
+import com.example.Cadastro_Avaliacao.model.entity.Usuario;
+import com.example.Cadastro_Avaliacao.model.repository.UsuarioRepository;
+import com.example.Cadastro_Avaliacao.service.implementation.UsuarioServiceImp;
+
 
 @RunWith(SpringRunner.class)
 @ActiveProfiles("test")
@@ -22,12 +28,12 @@ import com.example.Cadastro_Avaliacao.model.entity.Usuario;
 @AutoConfigureTestDatabase(replace = Replace.NONE)
 public class UsuarioRepositoryTest {
 
+	
 	@Autowired
 	UsuarioRepository repository;
 
 	@Autowired
 	TestEntityManager entityManager;
-	
 	@Test
 	public void verifyReturnTrueForMethodExistsByEmail() {
 		//create an object usuario
@@ -74,5 +80,5 @@ public class UsuarioRepositoryTest {
 				.email("teste@teste.com")
 				.senha("1234")
 				.build();
-	}
+	} 
 }
